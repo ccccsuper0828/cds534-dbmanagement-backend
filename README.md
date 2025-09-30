@@ -1,6 +1,5 @@
 # 🔧 CDS534 后端 API 服务
 
-基于 Next.js 15 构建的现代化API服务，提供用户管理和数据库操作功能。
 
 ## 🚀 快速开始
 
@@ -10,7 +9,7 @@ npm install
 ```
 
 ### 配置环境
-创建 `.env` 文件：
+创建 `.env.local` 文件：
 ```env
 DB_HOST=localhost
 DB_PORT=3306
@@ -24,7 +23,7 @@ DB_CONNECTION_LIMIT=10
 npm run dev
 ```
 
-服务器将在 http://localhost:3001 启动（如果3000端口被占用）
+服务器将在 http://localhost:3001 启动
 
 ## 📋 API 端点
 
@@ -43,8 +42,8 @@ GET /api/users?limit=10&offset=0
   "data": [
     {
       "id": 1,
-      "name": "张三",
-      "email": "zhangsan@example.com",
+      "name": "test",
+      "email": "test@example.com",
       "created_at": "2025-09-29T10:30:45.000Z",
       "updated_at": "2025-09-29T10:30:45.000Z"
     }
@@ -60,8 +59,8 @@ POST /api/users
 Content-Type: application/json
 
 {
-  "name": "李四",
-  "email": "lisi@example.com"
+  "name": "test",
+  "email": "test@example.com"
 }
 ```
 
@@ -108,67 +107,6 @@ Content-Type: application/json
 
 访问 **http://localhost:3001/api/docs** 查看完整的Swagger UI文档。
 
-### 文档功能
-- ✅ 交互式API测试界面
-- ✅ 完整的请求/响应示例  
-- ✅ 参数验证说明
-- ✅ 错误码说明
-- ✅ 直接在浏览器中测试API
-
-## 🏗️ 项目架构
-
-```
-src/
-├── app/
-│   ├── api/                    # API 路由
-│   │   ├── users/             # 用户管理API
-│   │   │   ├── route.ts       # 用户列表和创建
-│   │   │   └── [userId]/      # 单用户CRUD
-│   │   ├── database/          # 数据库API
-│   │   └── docs/              # API文档
-│   ├── globals.css            # 全局样式
-│   ├── layout.tsx             # 根布局
-│   └── page.tsx               # 主页
-├── lib/
-│   └── database.ts            # 数据库连接类
-└── config/
-    └── database.config.ts     # 数据库配置
-```
-
-## 🔗 数据库
-
-### 连接信息
-- **数据库**: `group_project`
-- **表**: `users`
-- **字段**: `id`, `name`, `email`, `created_at`, `updated_at`
-
-### 表结构
-```sql
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(45) NOT NULL,
-  email VARCHAR(45) NOT NULL,
-  created_at TIMESTAMP NOT NULL,
-  updated_at TIMESTAMP NOT NULL
-);
-```
-
-### ID序列说明
-用户ID可能不连续（如：1,3,5,7），这是因为：
-- MySQL的AUTO_INCREMENT不会重用已删除的ID
-- 这确保了数据的一致性和审计追踪
-- 这是标准的数据库行为，无需担心
-
-## ⚡ 特性
-
-- ✅ **类型安全** - 完整的TypeScript支持
-- ✅ **现代化** - Next.js 15 + App Router
-- ✅ **响应式** - Tailwind CSS样式
-- ✅ **标准化** - RESTful API设计
-- ✅ **文档化** - 自动生成的API文档
-- ✅ **错误处理** - 完善的错误响应
-- ✅ **CORS支持** - 跨域资源共享配置
-
 ## 🧪 测试
 
 ### 使用Swagger UI（推荐）
@@ -182,16 +120,14 @@ CREATE TABLE users (
 
 **创建用户**:
 ```json
-{"name": "测试用户", "email": "test@example.com"}
-{"name": "张三", "email": "zhangsan@test.com"}
-{"name": "李四", "email": "lisi@company.com"}
+{"name": "test2", "email": "test2@example.com"}
 ```
 
 **更新用户**:
 ```json
-{"name": "新名字"}
+{"name": "new name"}
 {"email": "new@email.com"}
-{"name": "完整更新", "email": "complete@update.com"}
+{"name": "check", "email": "complete@update.com"}
 ```
 
 ## 🛠️ 开发命令
@@ -225,13 +161,6 @@ npm run format   # 代码格式化
   "timestamp": "2025-09-29T10:30:45.123Z"
 }
 ```
-
-## 🔐 安全特性
-
-- ✅ **输入验证** - 邮箱格式、必填字段验证
-- ✅ **SQL注入防护** - 使用参数化查询
-- ✅ **CORS配置** - 限制跨域访问
-- ✅ **错误处理** - 安全的错误信息返回
 
 ## 📞 联系我们
 
